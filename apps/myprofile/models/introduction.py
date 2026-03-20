@@ -2,19 +2,23 @@ from django.db import models
 
 
 # Role model (e.g. backend dev)
-class Role_Tag(models.Model):
-    role_title = models.CharField(max_length=30, null=False, unique=True)
+class RoleTag(models.Model):
+    title = models.CharField(max_length=30, null=False, blank=False, unique=True)
 
     # Returns a string representation of this obj
     def __str__(self):
-        return {self.role_title}
+        return self.title
 
 
-# Owner Introduction model
-class Owner_Introduction(models.Model):
-    intro = models.CharField(max_length=2000, null=False)
-    # One to many roles
-    role_tag = models.ForeignKey(Role_Tag, on_delete=models.PROTECT)
+# Introduction model (e.g. Hi, I am Yuan. A passionate programmer)
+class OwnerIntroduction(models.Model):
+    owner = models.OneToOneField(
+        "OwnerProfile", on_delete=models.PROTECT, related_name="intro"
+    )  # one to one model to user, because each user should only has one intro
+    intro = models.CharField(max_length=2000, null=False, blank=False)
+    roles = models.ManyToManyField(
+        RoleTag, on_delete=models.PROTECT, related_name="introductions", blank=True
+    )
 
     def __str__(self):
-        return {self.intro}
+        return self.intro

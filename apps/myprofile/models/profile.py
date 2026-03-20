@@ -18,7 +18,7 @@ class Country(models.Model):
     A one to one property model with user
     """
 
-    name = models.CharField(max_length=20, null=False)
+    name = models.CharField(max_length=20, null=False, blank=False, unique=True)
 
 
 class Degree(models.TextChoices):
@@ -39,7 +39,7 @@ class School(models.Model):
     A one to one property model with education
     """
 
-    name = models.CharField(max_length=200, null=False)
+    name = models.CharField(max_length=200, null=False, blank=False, unique=True)
 
 
 class Course(models.Model):
@@ -47,7 +47,7 @@ class Course(models.Model):
     A one to one property model with education course
     """
 
-    name = models.CharField(max_length=100, null=False)
+    name = models.CharField(max_length=100, null=False, blank=False, unique=True)
 
 
 class Education(models.Model):
@@ -59,9 +59,11 @@ class Education(models.Model):
         "OwnerProfile", on_delete=models.CASCADE, related_name="educations"
     )
     # When delete to not also delete relation ones
-    degree = models.CharField(max_length=10, null=False, choices=Degree.choices)
+    degree = models.CharField(
+        max_length=10, null=False, blank=False, choices=Degree.choices
+    )
     other_degree = models.CharField(
-        max_length=30, null=True
+        max_length=30, null=True, blank=True
     )  # When choose other -> this field suppose to be not null
     school = models.ForeignKey(School, on_delete=models.PROTECT)  # one to one
 
@@ -76,7 +78,7 @@ class EducationCourse(models.Model):
     )
 
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
-    course_description = models.CharField(max_length=500, null=True)
+    course_description = models.CharField(max_length=500, null=True, blank=True)
 
 
 # A many property model to one with user
@@ -88,9 +90,11 @@ class Achievement(models.Model):
     owner = models.ForeignKey(
         "OwnerProfile", on_delete=models.CASCADE, related_name="achievements"
     )
-    title = models.CharField(max_length=200, null=False)
-    task_description = models.CharField(max_length=1000, null=True)
-    contribution_description = models.CharField(max_length=1000, null=False)
+    title = models.CharField(max_length=200, null=False, blank=False)
+    task_description = models.CharField(max_length=1000, null=True, blank=True)
+    contribution_description = models.CharField(
+        max_length=1000, null=False, blank=False
+    )
 
 
 class CountryCode(models.Model):
@@ -98,38 +102,40 @@ class CountryCode(models.Model):
     A one to one property model with user
     """
 
-    code = models.CharField(max_length=200, null=False)
+    code = models.CharField(max_length=200, null=False, blank=False, unique=True)
 
 
 class OwnerProfile(
     models.Model
-):  # Prob should rename it to user in later development for global model
+):  # Prob should rename it to UserProfile in later development for global model
     # auth
     user = models.OneToOneField(
         User, on_delete=models.CASCADE
     )  # each user can only point to one user
 
     # user real/login name
-    first_name = models.CharField(max_length=20, null=False)  # Zu Yuan
-    middle_name = models.CharField(max_length=10, null=True)
-    last_name = models.CharField(max_length=10, null=False)  # Lim
-    login_name = models.CharField(max_length=40, null=False, unique=True)  # YuanLim
+    first_name = models.CharField(max_length=20, null=False, blank=False)  # Zu Yuan
+    middle_name = models.CharField(max_length=10, null=True, blank=True)
+    last_name = models.CharField(max_length=10, null=False, blank=False)  # Lim
+    login_name = models.CharField(
+        max_length=40, null=False, blank=False, unique=True
+    )  # YuanLim
     # required field
     gender = models.CharField(
-        max_length=10, null=False, choices=Gender.choices
+        max_length=10, null=False, blank=False, choices=Gender.choices
     )  # one to one
     nationality = models.ForeignKey(Country, on_delete=models.PROTECT)  # one to one
-    email = models.EmailField(null=False)
-    acc_created_date = models.DateField(null=False)
+    email = models.EmailField(null=False, blank=False)
+    acc_created_date = models.DateField(null=False, blank=False)
     # nullable field
-    birth_day = models.DateField(null=True)
+    birth_date = models.DateField(null=True, blank=True)
     code = models.ForeignKey(
-        CountryCode, null=True, on_delete=models.PROTECT
+        CountryCode, null=True, blank=True, on_delete=models.PROTECT
     )  # one to one
-    phone_number = models.CharField(max_length=10, null=True)  # one to one
-    linkedIn = models.URLField(max_length=1000, null=True)
-    infineon = models.URLField(max_length=1000, null=True)
-    github = models.URLField(max_length=1000, null=True)
+    phone_number = models.CharField(max_length=10, null=True, blank=True)  # one to one
+    linkedIn = models.URLField(max_length=1000, null=True, blank=True)
+    infineon = models.URLField(max_length=1000, null=True, blank=True)
+    github = models.URLField(max_length=1000, null=True, blank=True)
 
     @property
     def full_name(self):

@@ -16,9 +16,7 @@ class OwnerIntroduction(models.Model):
         "OwnerProfile", on_delete=models.PROTECT, related_name="intro"
     )  # one to one model to user, because each user should only has one intro
     intro = models.CharField(max_length=2000, null=False, blank=False)
-    roles = models.ManyToManyField(
-        RoleTag, on_delete=models.PROTECT, related_name="introductions", blank=True
-    )
+    roles = models.ManyToManyField(RoleTag, related_name="introductions", blank=True)
 
     def __str__(self):
         return self.intro

@@ -23,3 +23,6 @@ class Project(models.Model):
 
     # Project description: (summary) (contribution) (task)
     description = models.CharField(max_length=3000, null=True, blank=True)
+
+    # Project used skills
+    project = models.ManyToManyField("Project", related_name="skills", blank=True)

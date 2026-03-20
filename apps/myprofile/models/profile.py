@@ -117,16 +117,13 @@ class OwnerProfile(
     first_name = models.CharField(max_length=20, null=False, blank=False)  # Zu Yuan
     middle_name = models.CharField(max_length=10, null=True, blank=True)
     last_name = models.CharField(max_length=10, null=False, blank=False)  # Lim
-    login_name = models.CharField(
-        max_length=40, null=False, blank=False, unique=True
-    )  # YuanLim
     # required field
     gender = models.CharField(
         max_length=10, null=False, blank=False, choices=Gender.choices
     )  # one to one
     nationality = models.ForeignKey(Country, on_delete=models.PROTECT)  # one to one
     email = models.EmailField(null=False, blank=False)
-    acc_created_date = models.DateField(null=False, blank=False)
+    acc_created_date = models.DateField(null=False, blank=False, auto_now_add=True)
     # nullable field
     birth_date = models.DateField(null=True, blank=True)
     code = models.ForeignKey(
@@ -136,6 +133,11 @@ class OwnerProfile(
     linkedIn = models.URLField(max_length=1000, null=True, blank=True)
     infineon = models.URLField(max_length=1000, null=True, blank=True)
     github = models.URLField(max_length=1000, null=True, blank=True)
+
+    # User having skills
+    project = models.ManyToManyField(
+        "Project", related_name="skills", null=True, blank=True
+    )
 
     @property
     def full_name(self):

@@ -1,3 +1,5 @@
+from ..models.profile import Profile
+
 from django.db import models
 
 
@@ -8,14 +10,12 @@ class Project(models.Model):
 
     # Many project to one user
     owner = models.ForeignKey(
-        "OwnerProfile", on_delete=models.CASCADE, related_name="projects"
+        Profile, on_delete=models.CASCADE, related_name="projects"
     )
 
     # Project title: e.g. Chatbot project
     title = models.CharField(max_length=200, null=False, blank=False)
 
-    # TODO: starting date should be earlier or equal than ending date
-    # Project starting/ending date: e.g. 2026-1-1 ~ 2026-2-1
     starting_date = models.DateField()
     ending_date = models.DateField(
         null=True, blank=True
@@ -26,3 +26,11 @@ class Project(models.Model):
 
     # Project used skills
     skills = models.ManyToManyField("Skill", related_name="projects", blank=True)
+
+    def __str__(self):
+        return f"""
+title: {self.title}
+starting_date: {self.starting_date}
+ending_date: {self.ending_date}
+description: {self.description}
+    """

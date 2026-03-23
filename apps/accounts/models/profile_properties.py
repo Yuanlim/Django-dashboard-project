@@ -55,7 +55,7 @@ class Education(models.Model):
     """
 
     profile = models.ForeignKey(
-        "Profiles", on_delete=models.CASCADE, related_name="educations"
+        "Profile", on_delete=models.CASCADE, related_name="educations"
     )
     # When delete to not also delete relation ones
     degree = models.CharField(
@@ -86,8 +86,8 @@ class Achievement(models.Model):
     A many to one property model with user
     """
 
-    owner = models.ForeignKey(
-        "OwnerProfile", on_delete=models.CASCADE, related_name="achievements"
+    profile = models.ForeignKey(
+        "Profile", on_delete=models.CASCADE, related_name="achievements"
     )
     title = models.CharField(max_length=200, null=False, blank=False)
     task_description = models.CharField(max_length=1000, null=False, blank=False)

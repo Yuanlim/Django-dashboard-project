@@ -1,3 +1,5 @@
+from ..models.profile import Profile
+
 from django.db import models
 
 
@@ -6,9 +8,7 @@ class Resume(models.Model):
     the_file = models.FileField(upload_to="./documents/", blank=False)
 
     # Relations to user (many to one)
-    owner = models.ForeignKey(
-        "OwnerProfile", on_delete=models.CASCADE, related_name="resumes"
-    )
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="resumes")
 
     # for debugging
     def __str__(self):

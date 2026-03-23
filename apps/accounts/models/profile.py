@@ -1,12 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from ..models.profile_properties import Country, CountryCode, Gender
+from .profile_properties import Gender
 
 
-class Profile(
-    models.Model
-):  # Prob should rename it to UserProfile in later development for global model
+class Profile(models.Model):
     # auth
     user = models.OneToOneField(
         User, on_delete=models.CASCADE
@@ -19,9 +17,9 @@ class Profile(
 
     # required field
     gender = models.CharField(
-        max_length=10, null=False, blank=False, choices=Gender.choices
+        max_length=30, null=False, blank=False, choices=Gender.choices
     )  # one to one
-    nationality = models.ForeignKey(Country, on_delete=models.PROTECT)  # one to one
+    nationality = models.ForeignKey("Country", on_delete=models.PROTECT)  # one to one
 
     # django User has email field this is redundant
     # email = models.EmailField(null=False, blank=False)
@@ -31,7 +29,7 @@ class Profile(
     # nullable field
     birth_date = models.DateField(null=True, blank=True)
     code = models.ForeignKey(
-        CountryCode, null=True, blank=True, on_delete=models.PROTECT
+        "CountryCode", null=True, blank=True, on_delete=models.PROTECT
     )  # one to one
     phone_number = models.CharField(max_length=15, null=True, blank=True)  # one to one
     linkedIn = models.URLField(max_length=1000, null=True, blank=True)

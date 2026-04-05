@@ -16,8 +16,9 @@ class Country(models.Model):
     """
     A one to one property model with user
     """
-
+    
     name = models.CharField(max_length=20, null=False, blank=False, unique=True)
+    country_code = models.CharField(max_length=10, null=False, blank=False)
 
 
 class Degree(models.TextChoices):
@@ -95,10 +96,3 @@ class Achievement(models.Model):
         max_length=1000, null=False, blank=False
     )
 
-
-class CountryCode(models.Model):
-    """
-    A one to one property model with user
-    """
-
-    code = models.CharField(max_length=200, null=False, blank=False, unique=True)

@@ -1,3 +1,4 @@
+# run once py
 from django.contrib.auth.models import Group
 
 HAD_ROLES = ["OWNER", "COMPANY", "REGULAR"]

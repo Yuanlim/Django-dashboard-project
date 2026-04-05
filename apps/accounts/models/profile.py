@@ -19,7 +19,7 @@ class Profile(models.Model):
     gender = models.CharField(
         max_length=30, null=False, blank=False, choices=Gender.choices
     )  # one to one
-    nationality = models.ForeignKey("Country", on_delete=models.PROTECT)  # one to one
+    nationality = models.ForeignKey("Country", on_delete=models.PROTECT)  # Many to one
 
     # django User has email field this is redundant
     # email = models.EmailField(null=False, blank=False)
@@ -28,10 +28,7 @@ class Profile(models.Model):
 
     # nullable field
     birth_date = models.DateField(null=True, blank=True)
-    code = models.ForeignKey(
-        "CountryCode", null=True, blank=True, on_delete=models.PROTECT
-    )  # one to one
-    phone_number = models.CharField(max_length=15, null=True, blank=True)  # one to one
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
     linkedIn = models.URLField(max_length=1000, null=True, blank=True)
     infineon = models.URLField(max_length=1000, null=True, blank=True)
     github = models.URLField(max_length=1000, null=True, blank=True)

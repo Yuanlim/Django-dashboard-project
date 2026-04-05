@@ -1,0 +1,40 @@
+// Later this management should be in other software
+// Following OWASP A03:2025 Software Supply Chain Failures,
+// and A08:2025 Software or Data Integrity Failures
+
+Package: django 
+Version: 6.0.3
+Version Updated in: 2026/3/3
+Last Review: 2026/4/5
+Proposes: Backend framework, API development, ORM, Migrations and Validations.
+Risk Level: High
+Available update: True
+Reason for not updating: Should be urgent 6.0.4 is security based update. But release on April 7.
+
+
+rest_framework 
+Version: 3.17.0
+Version Updated in: 2026/3/18
+Last Review: 2026/4/5
+Proposes: Supports Django in design API and handling incoming data.
+Risk Level: High
+Available update: True
+Reason for not updating: HTMLFormRenderer is not critical to the current system.
+
+
+pycountry 
+Version: 26.2.16
+Version Updated in: 2026/2/17
+Last Review: 2026/4/5
+Proposes: Inserting country name to database and support in searching country code in phonenumbers package.
+Risk Level: Low
+Available update: False
+
+
+phonenumbers 9.0.27
+Version: 9.0.27
+Version Updated in: 2026/2/17
+Last Review: 2026/4/5
+Proposes: Inserting country code to database.
+Risk Level: Low
+Available update: False

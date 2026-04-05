@@ -4,7 +4,7 @@ from django.db import models
 # A one property model to one with user
 class Gender(models.TextChoices):
     """
-    A one to one property model with user
+    A one to many property model with user
     """
 
     MALE = "male", "Male"
@@ -14,10 +14,10 @@ class Gender(models.TextChoices):
 
 class Country(models.Model):
     """
-    A one to one property model with user
+    A one to many property model with user
     """
     
-    name = models.CharField(max_length=20, null=False, blank=False, unique=True)
+    name = models.CharField(max_length=100, null=False, blank=False, unique=True)
     country_code = models.CharField(max_length=10, null=False, blank=False)
 
 

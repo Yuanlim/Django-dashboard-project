@@ -40,6 +40,8 @@ class School(models.Model):
     """
 
     name = models.CharField(max_length=200, null=False, blank=False, unique=True)
+    created_by = models.ForeignKey("Profile", on_delete=models.PROTECT, null=True, blank=True)
+    verified = models.BooleanField(null=False, blank=False, default=False)
 
 
 class Course(models.Model):
@@ -48,6 +50,8 @@ class Course(models.Model):
     """
 
     name = models.CharField(max_length=100, null=False, blank=False, unique=True)
+    created_by = models.ForeignKey("Profile", on_delete=models.PROTECT, null=True, blank=True)
+    verified = models.BooleanField(null=False, blank=False, default=False)
 
 
 class Education(models.Model):
@@ -65,7 +69,7 @@ class Education(models.Model):
     other_degree = models.CharField(
         max_length=30, null=True, blank=True
     )  # When choose other -> this field suppose to be not null
-    school = models.ForeignKey(School, on_delete=models.PROTECT)  # one to one
+    school = models.ForeignKey(School, on_delete=models.PROTECT)  # one to many
 
 
 class EducationCourse(models.Model):

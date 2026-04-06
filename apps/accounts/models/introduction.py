@@ -4,6 +4,8 @@ from django.db import models
 # Role model (e.g. backend dev)
 class RoleTag(models.Model):
     title = models.CharField(max_length=30, null=False, blank=False, unique=True)
+    created_by = models.ForeignKey("Profile", on_delete=models.PROTECT, null=True, blank=True)
+    verified = models.BooleanField(null=False, blank=False, default=False)
 
     # Returns a string representation of this obj
     def __str__(self):

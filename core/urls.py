@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from apps.accounts.apis.skill_api import SkillSearchAndInsert
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/skill/searchAndInsert/', SkillSearchAndInsert.as_view(), name="skill_search_andI_insert")
 ]

@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from django.db import models
 
 
-# A one property model to one with user
 class Gender(models.TextChoices):
     """
     A one to many property model with user
@@ -30,7 +31,6 @@ class Degree(models.TextChoices):
     MASTERS = "masters", "MASTERS"
     BACHELOR = "bachelor", "BACHELOR"
     DIPLOMA = "diploma", "DIPLOMA"
-    DEGREE = "degree", "DEGREE"
     OTHERS = "others", "OTHERS"
 
 
@@ -62,14 +62,19 @@ class Education(models.Model):
     profile = models.ForeignKey(
         "Profile", on_delete=models.CASCADE, related_name="educations"
     )
-    # When delete to not also delete relation ones
+    # When delete do not also delete relation ones
     degree = models.CharField(
         max_length=10, null=False, blank=False, choices=Degree.choices
     )
     other_degree = models.CharField(
         max_length=30, null=True, blank=True
     )  # When choose other -> this field suppose to be not null
-    school = models.ForeignKey(School, on_delete=models.PROTECT)  # one to many
+    school = models.ForeignKey(School, on_delete=models.PROTECT)  # many to one
+    graduated = models.BooleanField(null=False, blank=True, default=False)
+    starting_date = models.DateField(null=False, blank=False)
+    
+    # TODO: When graduated this should be non-nullable
+    ending_date = models.DateField(null=True, blank=True)
 
 
 class EducationCourse(models.Model):
@@ -85,7 +90,6 @@ class EducationCourse(models.Model):
     course_description = models.CharField(max_length=500, null=True, blank=True)
 
 
-# A many property model to one with user
 class Achievement(models.Model):
     """
     A many to one property model with user

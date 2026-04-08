@@ -1,10 +1,10 @@
 ### A serializers is the one who did validations and transform
 from rest_framework import serializers
-from ..models.introduction import OwnerIntroduction
+from ..models.introduction import Introduction
 
 
 class IntroSerializers(serializers.ModelSerializer):
 
     class Meta:
-        model = OwnerIntroduction
+        model = Introduction
         fields = ["intro", "roles"]

@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from ..models.profile import OwnerProfile
+from ..models.profile import Profile
 import re
 
 
 class ProfileSerializers(serializers.ModelSerializer):
 
     class Meta:
-        model = OwnerProfile
+        model = Profile
         fields = [
             "first_name",
             "middle_name",
@@ -26,17 +26,14 @@ class ProfileSerializers(serializers.ModelSerializer):
         """
         Check profile `first_name`, `middle_name` & `last_name` is valid.
 
-        Arguments
-        ---------
-            Values -- JSON to be validate
+        Args:
+            value: Request dictionary
 
-        Return
-        ------
-            Valid JSON
+        Returns:
+            value: Valid JSON
 
-        Exception
-        ---------
-            Throw if not valid
+        Raises:
+            Http400: Throw if not valid
         """
         # PATCH some attribute handling
         # try to get first_name if not skip this part
@@ -47,17 +44,13 @@ class ProfileSerializers(serializers.ModelSerializer):
             "first_name", getattr(self.instance, "first_name", None)
         )
         last_name = values.get("last_name", getattr(self.instance, "last_name", None))
-        if first_name and last_name:
-            middle_name = ("middle_name", getattr(self.instance, "middle_name", None))
-
-            # validate logic
-            self.check_name(first_name, last_name, middle_name, values)
+        middle_name = values.get("middle_name", getattr(self.instance, "middle_name", None))
 
         # No symbols or numbers regular expression
         validate_pattern = re.compile(r"^[A-Za-z]+$")
 
         # Check name is valid
-        if not first_name and validate_pattern.fullmatch(first_name):
+        if first_name and not validate_pattern.fullmatch(first_name):
             raise serializers.ValidationError(
                 {"first_name": "First name must contain only letters."}
             )
@@ -67,26 +60,25 @@ class ProfileSerializers(serializers.ModelSerializer):
                 {"middle_name": "Middle name must contain only letters."}
             )
 
-        if not last_name and validate_pattern.fullmatch(last_name):
+        if last_name and not validate_pattern.fullmatch(last_name):
             raise serializers.ValidationError(
                 {"last_name": "Last name must contain only letters."}
             )
+            
+        return values
 
     def validate_phone_number(self, value):
         """
         Validate if phone number is all numbers
 
-        Arguments
-        ---------
-            value -- request dictionary
+        Args:
+            value: Request dictionary
 
-        Return
-        ------
-            Valid JSON
+        Returns:
+            value: Valid JSON
 
-        Exception
-        ---------
-            Throw if not valid
+        Raises:
+            Http400: Throw if not valid
         """
         validate_pattern = re.compile(r"^\d+$")
 
@@ -101,17 +93,14 @@ class ProfileSerializers(serializers.ModelSerializer):
         """
         Validate if it is a linkedIn profile
 
-        Arguments
-        ---------
-            value -- request dictionary
+        Args:
+            value: Request dictionary
 
-        Return
-        ------
-            Valid JSON
+        Returns:
+            value: Valid JSON
 
-        Exception
-        ---------
-            Throw if not valid
+        Raises:
+            Http400: Throw if not valid
         """
 
         validate_pattern = re.compile(r"^https://www.linkedin\.com/in/.+$")
@@ -124,11 +113,23 @@ class ProfileSerializers(serializers.ModelSerializer):
         )
 
     def validate_github(self, value):
+        """
+        Validate if it is a github profile
+
+        Args:
+            value: Request dictionary
+
+        Returns:
+            value: Valid JSON
+
+        Raises:
+            Http400: Throw if not valid
+        """
         validate_pattern = re.compile(r"^https://github\.com/.+$")
 
         if validate_pattern.fullmatch(value):
             return value
 
         raise serializers.ValidationError(
-            "A valid github URL should start with https://www.github.com/in/"
+            "A valid github URL should start with https://www.github.com/"
         )

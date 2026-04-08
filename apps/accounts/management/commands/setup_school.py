@@ -1,7 +1,8 @@
 SCHOOL_I_KNOW = [
     "National Kaohsiung University of Science and Technology", 
     "Massachusetts Institute of Technology", 
-    "University of Oxford", "University of Cambridge", 
+    "University of Oxford", 
+    "University of Cambridge", 
     "Harvard University", 
     "Imperial College London", 
     "National Taiwan University", 

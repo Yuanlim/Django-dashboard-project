@@ -1,0 +1,89 @@
+{
+    "info": {
+        "first_name": "123",
+        "last_name": "Bot",
+        "gender": "male",
+        "nationality": "Chad",
+        "birth_date": "1969-4-20",
+        "phone_number": "00000000",
+        "skills": [
+            "python",
+            "database",
+            "django",
+            "back-end development"
+        ]
+    },
+    "educations": [
+        {
+            "degree": "masters",
+            "school": "Massachusetts Institute of Technology",
+            "graduated": true,
+            "starting_date": "2025-2-1",
+            "ending_date": "2026-2-1",
+            "education_courses": [
+                {
+                    "course": "Digital image processing",
+                    "course_description": "I do stuff here."
+                },
+                {
+                    "course": "Computer vision",
+                    "course_description": "I do more stuff here"
+                }
+            ]
+        },
+        {
+            "degree": "bachelor",
+            "school": "Massachusetts Institute of Technology",
+            "graduated": true,
+            "starting_date": "2021-2-1",
+            "ending_date": "2025-2-1"
+        },
+        {
+            "degree": "others",
+            "others_degree": "certificate",
+            "graduated": true,
+            "starting_date": "2020-2-1",
+            "ending_date": "2021-2-1",
+            "school": "College of the Redwoods"
+        }
+    ],
+    "achievements": [
+        {
+            "title": "Best performance project in Digital image processing course",
+            "task_description": "Face recognition",
+            "contribution_description": "Conducted research and build the solutions"
+        },
+        {
+            "title": "Best performance project in Computer vision",
+            "task_description": "Re-identification",
+            "contribution_description": "I also do stuff here."
+        }
+    ],
+    "projects": [
+        {
+            "title": "Minecraft",
+            "starting-date": "2025-6-7",
+            "skills": [
+                "Unreal Engine",
+                "Texturing",
+                "Shading"
+            ]
+        },
+        {
+            "title": "Wordle",
+            "starting-date": "2026-4-1",
+            "skills": [
+                "Full-stack development",
+                "API development",
+                "React"
+            ]
+        }
+    ],
+    "introduction": {
+        "intro": "I am a bot, that is trying to break your APIs",
+        "roles": [
+            "Software Engineer",
+            "Researcher"
+        ]
+    }
+}

@@ -1,0 +1,160 @@
+{
+  "info": {
+    "_postman_id": "2a8309b2-eaea-4ce5-bedf-5e20c31ca6ed",
+    "name": "Django Dash Board",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21639661"
+  },
+  "item": [
+    {
+      "name": "Skill",
+      "item": [
+        {
+          "name": "Invalid Test Case",
+          "item": [
+            {
+              "name": "Empty",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/skill/searchAndInsert/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "skill",
+                    "searchAndInsert",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Skill name too long",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"I intentionally insert something too long in database and it wasn't a skill. (；￣Д￣)!!!! this input will exceeded 200 characters, can I break the endpoints (・`ω´・)\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/skill/searchAndInsert/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "skill",
+                    "searchAndInsert",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Method",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Valid Test Case",
+          "item": [
+            {
+              "name": "Search",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"python\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/skill/searchAndInsert/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "skill",
+                    "searchAndInsert",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create new",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Postman\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/skill/searchAndInsert/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "skill",
+                    "searchAndInsert",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

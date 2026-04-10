@@ -1,17 +1,15 @@
 from typing import Optional
 
 from apps.accounts.models.skill import Skill
+from apps.accounts.services.base import ServiceBase
 
-class CreateSkillCommand:
+class CreateSkill(ServiceBase[Skill]):
     
-    def __init__(self, skill_name: str):
-        self.skill_name = skill_name
-        self.skill_obj: Optional[Skill] = None
-        self.skill_pk: Optional[int] = None
+    def __init__(self):
+        super().__init__()
         
-    def create_skill(self):
+    def create_skill(self, name):
         # TODO: black-list cant be created
         
-        self.skill_obj = Skill.objects.create(name=self.skill_name, verified=False)
-        self.skill_pk = self.skill_obj.pk
-        return
+        self.obj = Skill.objects.create(name=name, verified=False)
+        return self.obj

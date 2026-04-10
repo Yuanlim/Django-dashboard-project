@@ -93,7 +93,7 @@ class CourseSerializers(serializers.ModelSerializer):
 
     class Meta:
         model: Course
-        fields = ["name"]
+        fields = ["name", "country_code"]
 
 
 class SchoolSerializers(serializers.ModelSerializer):

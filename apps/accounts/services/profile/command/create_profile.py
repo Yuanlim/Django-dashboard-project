@@ -1,9 +1,11 @@
-from typing import Any, TypedDict
 from rest_framework import status
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.hashers import make_password
 
 from apps.accounts.domain.enums.risk_level import RiskLevel
 from apps.accounts.domain.types.profile import CreateProfileInput
 from apps.accounts.models.profile import Profile
+from apps.accounts.serializers.user_serializers import UserSerializer
 from apps.accounts.services.base import ServiceBase
 from apps.accounts.services.profile_properties.query.search_country import SearchCountry
 from apps.accounts.services.skill.command.create_skill import CreateSkill
@@ -20,14 +22,7 @@ class CreateProfileCommand(ServiceBase[Profile]):
             skill_search_service: SearchSkill
         ):
         # Create user info
-        self.first_name = info["first_name"]
-        self.middle_name = info["middle_name"]
-        self.last_name = info["last_name"]
-        self.gender = info["gender"]
-        self.nationality = info["nationality"]
-        self.birth_date = info["birth_date"]
-        self.phone_number = info["phone_number"]
-        self.skills = info["skills"]
+        self.info = info
         
         # Injected service
         self.country_service = country_service
@@ -37,8 +32,8 @@ class CreateProfileCommand(ServiceBase[Profile]):
     def create(self):
         
         # Search country
-        country = self.country_service.search_by_name(name=self.nationality)
-        if country is None:
+        self.nationality = self.country_service.search_by_name(name=self.info["nationality"])
+        if self.nationality is None:
             self.service_result = {
                 "error": True,
                 "to_logger": "",
@@ -47,14 +42,45 @@ class CreateProfileCommand(ServiceBase[Profile]):
                 "from_service": "Create Profile",
                 "response_status": status.HTTP_404_NOT_FOUND
             }
+            return
         
         # Search for skill if not create one
         skillList = []
         
-        for s in self.skills:
+        for s in self.info["skills"]:
             skill = self.skill_search_service.search_by_name(name=s)
             
             if skill is None:
                 skillList.append(self.skill_create_service.create_skill(name=s))
-            
+                
+        self.info["skills"] = skillList
         
+        # Make User but make sure there is no same user
+        
+        # All user should be regular unless TODO: proven
+        serializer = UserSerializer(data=self.info)
+        
+        if not serializer.is_valid(raise_exception=True):
+            self.service_result = {
+                "error": True,
+                "to_logger": "",
+                "risk_level": RiskLevel.NONE,
+                "client_response": "Create user properties error",
+                "from_service": "Create Profile",
+                "response_status": status.HTTP_400_BAD_REQUEST
+            }
+            return
+        
+        # hash password
+        self.info["password"] = make_password(self.info["password"])
+        
+        # get group regular
+        regular_group = Group.objects.get(name__iexact="regular")
+        
+        # create user
+        user = User.objects.create(**self.info, group=regular_group)
+        
+        # create profile
+        profile = Profile.objects.create(**self.info, user=user)
+        
+        return profile

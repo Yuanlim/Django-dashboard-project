@@ -3,7 +3,7 @@ from ..models.profile import Profile
 import re
 
 
-class ProfileSerializers(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile

@@ -5,7 +5,7 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework.views import Response
 
-from apps.accounts.serializers.profile_serializers import ProfileSerializers
+from apps.accounts.serializers.profile_serializers import ProfileSerializer
 from apps.accounts.services.profile.command.create_profile import CreateProfileCommand, CreateProfileInput
 from apps.accounts.services.profile_properties.query.search_country import SearchCountry
 from apps.accounts.services.skill.command.create_skill import CreateSkill
@@ -22,7 +22,7 @@ class ProfileTests(APITestCase):
             data = json.load(file)
         
         profile_info = data["info"]
-        serializer = ProfileSerializers(data=profile_info)
+        serializer = ProfileSerializer(data=profile_info)
         
         if serializer.is_valid(raise_exception=True):
             response = self.client.post(url, data=profile_info, format='json')

@@ -2,7 +2,7 @@ from rest_framework import serializers
 from ..models.resume import Resume
 
 
-class ResumeSerializers(serializers.ModelSerializer):
+class ResumeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Resume

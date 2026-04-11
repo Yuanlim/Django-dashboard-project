@@ -21,11 +21,6 @@ class Profile(models.Model):
     )  # one to one
     nationality = models.ForeignKey("Country", on_delete=models.PROTECT)  # Many to one
 
-    # django User has email field this is redundant
-    # email = models.EmailField(null=False, blank=False)
-
-    acc_created_date = models.DateField(null=False, blank=False, auto_now_add=True)
-
     # nullable field
     birth_date = models.DateField(null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)

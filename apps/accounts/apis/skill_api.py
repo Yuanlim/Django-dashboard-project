@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from apps.accounts.models.skill import Skill
-from apps.accounts.serializers.skill_serializers import SkillSearchSerializers
+from apps.accounts.serializers.skill_serializers import SkillSearchSerializer
 
 class SkillSearchAndInsert(APIView):
     """
@@ -33,7 +33,7 @@ class SkillSearchAndInsert(APIView):
         """
         
         # validate skill request
-        serializer = SkillSearchSerializers(data=request.data)
+        serializer = SkillSearchSerializer(data=request.data)
         if not serializer.is_valid():
             return Response(
                 serializer.errors,

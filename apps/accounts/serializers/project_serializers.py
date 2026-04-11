@@ -2,7 +2,7 @@ from rest_framework import serializers
 from ..models.project import Project
 
 
-class ProjectSerializers(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ["title", "starting_date", "ending_date", "skills"]

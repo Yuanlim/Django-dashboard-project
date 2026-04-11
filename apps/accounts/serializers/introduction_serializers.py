@@ -3,7 +3,7 @@ from rest_framework import serializers
 from ..models.introduction import Introduction
 
 
-class IntroSerializers(serializers.ModelSerializer):
+class IntroSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Introduction

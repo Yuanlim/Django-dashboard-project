@@ -1,11 +1,14 @@
 {
     "info": {
+        "username": "Bot!!!",
         "first_name": "123",
         "last_name": "Bot",
         "gender": "male",
         "nationality": "Chad",
         "birth_date": "1969-4-20",
         "phone_number": "00000000",
+        "email": "bot123@gmail.com",
+        "password": "helloworld",
         "skills": [
             "python",
             "database",

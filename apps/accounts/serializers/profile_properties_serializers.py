@@ -5,7 +5,7 @@ from rest_framework import serializers
 from apps.accounts.models.profile_properties import Achievement, Country, Course, Education, EducationCourse, School
 
 
-class EducationSerializers(serializers.ModelSerializer):
+class EducationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Education
@@ -82,35 +82,35 @@ class EducationSerializers(serializers.ModelSerializer):
         
 
 
-class AchievementSerializers(serializers.ModelSerializer):
+class AchievementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model: Achievement
         fields = ["title", "task_description", "contribution_description"]
 
 
-class CourseSerializers(serializers.ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model: Course
         fields = ["name", "country_code"]
 
 
-class SchoolSerializers(serializers.ModelSerializer):
+class SchoolSerializer(serializers.ModelSerializer):
 
     class Meta:
         model: School
         fields = ["name"]
 
 
-class CountrySerializers(serializers.ModelSerializer):
+class CountrySerializer(serializers.ModelSerializer):
 
     class Meta:
         model: Country
         fields = ["name"]
 
 
-class EducationCourseSerializers(serializers.ModelSerializer):
+class EducationCourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model: EducationCourse

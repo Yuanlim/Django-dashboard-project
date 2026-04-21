@@ -7,6 +7,7 @@ class CreateProfileInput(TypedDict):
     middle_name: str | None
     last_name: str
     gender: str
+    email: str
     nationality: str
     birth_date: str | None
     phone_number: str | None

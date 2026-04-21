@@ -19,7 +19,7 @@ class Country(models.Model):
     """
     
     name = models.CharField(max_length=100, null=False, blank=False, unique=True)
-    country_code = models.CharField(max_length=10, null=False, blank=False)
+    country_code = models.IntegerField(null=False, blank=False)
 
 
 class Degree(models.TextChoices):

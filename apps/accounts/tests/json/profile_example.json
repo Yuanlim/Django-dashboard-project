@@ -5,7 +5,7 @@
         "last_name": "Bot",
         "gender": "male",
         "nationality": "Chad",
-        "birth_date": "1969-4-20",
+        "birth_date": "1969-04-20",
         "phone_number": "00000000",
         "email": "bot123@gmail.com",
         "password": "helloworld",
@@ -21,8 +21,8 @@
             "degree": "masters",
             "school": "Massachusetts Institute of Technology",
             "graduated": true,
-            "starting_date": "2025-2-1",
-            "ending_date": "2026-2-1",
+            "starting_date": "2025-02-01",
+            "ending_date": "2026-02-01",
             "education_courses": [
                 {
                     "course": "Digital image processing",
@@ -38,12 +38,12 @@
             "degree": "bachelor",
             "school": "Massachusetts Institute of Technology",
             "graduated": true,
-            "starting_date": "2021-2-1",
-            "ending_date": "2025-2-1"
+            "starting_date": "2021-02-01",
+            "ending_date": "2025-02-01"
         },
         {
-            "degree": "others",
-            "others_degree": "certificate",
+            "degree": "other",
+            "other_degree": "certificate",
             "graduated": true,
             "starting_date": "2020-2-1",
             "ending_date": "2021-2-1",
@@ -65,7 +65,7 @@
     "projects": [
         {
             "title": "Minecraft",
-            "starting-date": "2025-6-7",
+            "starting_date": "2025-06-07",
             "skills": [
                 "Unreal Engine",
                 "Texturing",
@@ -74,7 +74,7 @@
         },
         {
             "title": "Wordle",
-            "starting-date": "2026-4-1",
+            "starting_date": "2026-04-01",
             "skills": [
                 "Full-stack development",
                 "API development",

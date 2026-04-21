@@ -25,15 +25,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     def validate(self, values):
         """
         Check profile `first_name`, `middle_name` & `last_name` is valid.
-
-        Args:
-            value: Request dictionary
-
-        Returns:
-            value: Valid JSON
-
-        Raises:
-            Http400: Throw if not valid
         """
         # PATCH some attribute handling
         # try to get first_name if not skip this part
@@ -70,15 +61,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     def validate_phone_number(self, value):
         """
         Validate if phone number is all numbers
-
-        Args:
-            value: Request dictionary
-
-        Returns:
-            value: Valid JSON
-
-        Raises:
-            Http400: Throw if not valid
         """
         validate_pattern = re.compile(r"^\d+$")
 
@@ -92,15 +74,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     def validate_linkedIn(self, value):
         """
         Validate if it is a linkedIn profile
-
-        Args:
-            value: Request dictionary
-
-        Returns:
-            value: Valid JSON
-
-        Raises:
-            Http400: Throw if not valid
         """
 
         validate_pattern = re.compile(r"^https://www.linkedin\.com/in/.+$")
@@ -115,15 +88,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     def validate_github(self, value):
         """
         Validate if it is a github profile
-
-        Args:
-            value: Request dictionary
-
-        Returns:
-            value: Valid JSON
-
-        Raises:
-            Http400: Throw if not valid
         """
         validate_pattern = re.compile(r"^https://github\.com/.+$")
 

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework import status
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.hashers import make_password
@@ -10,6 +12,7 @@ from apps.accounts.services.base import ServiceBase
 from apps.accounts.services.profile_properties.query.search_country import SearchCountry
 from apps.accounts.services.skill.command.create_skill import CreateSkill
 from apps.accounts.services.skill.query.search_skill import SearchSkill
+
 
 
 class CreateProfileCommand(ServiceBase[Profile]):
@@ -51,7 +54,9 @@ class CreateProfileCommand(ServiceBase[Profile]):
             skill = self.skill_search_service.search_by_name(name=s)
             
             if skill is None:
-                skillList.append(self.skill_create_service.create_skill(name=s))
+                skill = self.skill_create_service.create_skill(name=s)
+            
+            skillList.append(skill)
                 
         self.info["skills"] = skillList
         
@@ -78,9 +83,27 @@ class CreateProfileCommand(ServiceBase[Profile]):
         regular_group = Group.objects.get(name__iexact="regular")
         
         # create user
-        user = User.objects.create(**self.info, group=regular_group)
+        user = User.objects.create(
+            username=self.info["username"],
+            email=self.info["email"],
+            password=self.info["password"],
+            date_joined=datetime.now(),
+            group=regular_group
+        )
         
         # create profile
-        profile = Profile.objects.create(**self.info, user=user)
+        profile = Profile.objects.create(
+            first_name=self.info["first_name"],
+            middle_name=self.info["middle_name"],
+            last_name=self.info["last_name"],
+            birth_date=self.info["birth_date"],
+            nationality=self.info["nationality"],
+            phone_number=self.info["phone_number"],
+            gender=self.info["gender"],
+            user=user
+        )
+        
+        # many to many fields need to be assign separately
+        profile.skills.set(self.info["skills"])
         
         return profile

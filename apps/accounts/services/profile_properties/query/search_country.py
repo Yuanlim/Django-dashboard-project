@@ -10,10 +10,6 @@ class SearchCountry(ServiceBase[Country]):
     def search_by_name(self, name):
         self.obj = Country.objects.filter(name__iexact=name).first()
         return self.obj
-        
-    def search_by_country_name(self, country_name):
-        self.obj = Country.objects.filter(country_name__iexact=country_name).first()
-        return self.obj
     
     def search_by_pk(self, pk: int):
         self.obj = Country.objects.filter(pk=pk).first()

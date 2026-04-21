@@ -11,21 +11,12 @@ class EducationSerializer(serializers.ModelSerializer):
         model = Education
         fields = ["degree", "other_degree", "starting_date", "ending_date", "graduated"]
 
-    def validation(self, values):
+    def validate(self, values):
         """
         A validator that checks: 
         1. When degree is in selection of "other", it suppose to have an other degree description.
         2. When not graduated, there is no ending date. However, if graduated there is a ending date.
         3. Starting_date should not be before ending_date. Starting date is not future date.
-        
-        Args:
-            values: Validation data.
-            
-        Returns:
-            values: After validated data.
-            
-        Raises:
-            Http400: If the conditions doesn't match.
         """
         
         # First validation

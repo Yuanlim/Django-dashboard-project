@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from apps.accounts.apis.skill_api import SkillSearchAndInsert
+from apps.accounts.tests.apis.profile_create import ProfileTests
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -14,7 +14,6 @@ from apps.accounts.services.skill.command.create_skill import CreateSkill
 from apps.accounts.services.skill.query.search_skill import SearchSkill
 
 
-
 class CreateProfileCommand(ServiceBase[Profile]):
     
     def __init__(
@@ -47,19 +46,6 @@ class CreateProfileCommand(ServiceBase[Profile]):
             }
             return
         
-        # Search for skill if not create one
-        skillList = []
-        
-        for s in self.info["skills"]:
-            skill = self.skill_search_service.search_by_name(name=s)
-            
-            if skill is None:
-                skill = self.skill_create_service.create_skill(name=s)
-            
-            skillList.append(skill)
-                
-        self.info["skills"] = skillList
-        
         # Make User but make sure there is no same user
         
         # All user should be regular unless TODO: proven
@@ -88,8 +74,22 @@ class CreateProfileCommand(ServiceBase[Profile]):
             email=self.info["email"],
             password=self.info["password"],
             date_joined=datetime.now(),
-            group=regular_group
         )
+        
+        user.groups.set([regular_group])
+        
+        # Search for skill if not create one
+        skillList = []
+        
+        for s in self.info["skills"]:
+            skill = self.skill_search_service.search_by_name(name=s)
+            
+            if skill is None:
+                skill = self.skill_create_service.create_skill(name=s, user=user)
+            
+            skillList.append(skill)
+                
+        self.info["skills"] = skillList
         
         # create profile
         profile = Profile.objects.create(

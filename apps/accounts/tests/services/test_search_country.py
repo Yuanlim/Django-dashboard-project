@@ -4,9 +4,10 @@ from django.test import TestCase
 from apps.accounts.models.profile_properties import Country
 from apps.accounts.services.profile_properties.query.search_country import SearchCountry
 from apps.accounts.tests.apis.profile_create import ProfileTests
+from apps.accounts.tests.services.base import TestServiceBase
 
 
-class QueryCountryTest(TestCase):
+class SearchCountryTest(TestCase, TestServiceBase):
     
     def setUp(self):
         """
@@ -20,11 +21,6 @@ class QueryCountryTest(TestCase):
         
         # Service used
         self.search_country_service = SearchCountry()
-    
-    
-    # fail message constructor
-    def does_not_exist_report(self, data: int|str):
-        return f"{data} doesn't exist in country table and it should not be happened."
         
         
     def test_search_country_by_name(self):

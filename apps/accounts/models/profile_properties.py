@@ -1,5 +1,4 @@
-from datetime import datetime
-
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -40,7 +39,7 @@ class School(models.Model):
     """
 
     name = models.CharField(max_length=200, null=False, blank=False, unique=True)
-    created_by = models.ForeignKey("Profile", on_delete=models.PROTECT, null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
     verified = models.BooleanField(null=False, blank=False, default=False)
 
 
@@ -50,7 +49,7 @@ class Course(models.Model):
     """
 
     name = models.CharField(max_length=100, null=False, blank=False, unique=True)
-    created_by = models.ForeignKey("Profile", on_delete=models.PROTECT, null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
     verified = models.BooleanField(null=False, blank=False, default=False)
 
 
@@ -59,8 +58,8 @@ class Education(models.Model):
     A many to one property model with user
     """
 
-    profile = models.ForeignKey(
-        "Profile", on_delete=models.CASCADE, related_name="educations"
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="educations"
     )
     # When delete do not also delete relation ones
     degree = models.CharField(
@@ -95,8 +94,8 @@ class Achievement(models.Model):
     A many to one property model with user
     """
 
-    profile = models.ForeignKey(
-        "Profile", on_delete=models.CASCADE, related_name="achievements"
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="achievements"
     )
     title = models.CharField(max_length=200, null=False, blank=False)
     task_description = models.CharField(max_length=1000, null=False, blank=False)

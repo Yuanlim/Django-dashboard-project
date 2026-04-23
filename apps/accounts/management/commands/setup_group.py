@@ -1,24 +1,13 @@
-ROLES_I_KNOWN = [
-    "Full-stack Developer",
-    "Back-end Developer",
-    "Front-end Developer",
-    "Web Developer",
-    "IoT Engineer",
-    "UX/UI Designer",
-    "Software Engineer"
-]
+# run once py
+from django.contrib.auth.models import Group
 
-from django.core.management.base import BaseCommand, CommandError
-from apps.accounts.models.introduction import RoleTag
+HAD_GROUP = ["OWNER", "COMPANY", "PREMIUM", "REGULAR"]
+
+from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
-    help = "Create initial Role Tag data"
+    help = "Create initial Group"
 
     def handle(self, *args, **options):
-        for r in ROLES_I_KNOWN:
-            try:
-                # Inserting new skill
-                RoleTag.objects.get_or_create(title=r, verified=True)
-            except Exception as e:
-                # When insert something happened
-                raise CommandError(e)
+        for role in HAD_GROUP:
+            Group.objects.get_or_create(name=role)

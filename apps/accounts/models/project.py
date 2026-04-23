@@ -1,4 +1,4 @@
-from ..models.profile import Profile
+from django.contrib.auth.models import User
 
 from django.db import models
 
@@ -9,8 +9,8 @@ class Project(models.Model):
     """
 
     # Many project to one user
-    owner = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, related_name="projects"
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="projects"
     )
 
     # Project title: e.g. Chatbot project

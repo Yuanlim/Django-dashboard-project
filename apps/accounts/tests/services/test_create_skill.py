@@ -23,7 +23,7 @@ class CreateSkillTest(TestCase, TestServiceBase):
         
         self.user.groups.set([group])
         
-    def test_create_skill_valid(self):
+    def test_create_skill(self):
         
         skill1 = self.service.create_skill(name="Hello", user=self.user)
         skill2 = self.service.create_skill(name="YouTube", user=self.user)

@@ -1,0 +1,149 @@
+[
+    {
+        "info": {
+            "username": "Bot",
+            "first_name": "Hello",
+            "last_name": "Bot",
+            "gender": "male",
+            "nationality": "Chad",
+            "birth_date": "1969-04-20",
+            "phone_number": "00000000",
+            "email": "bot123@gmail.com",
+            "password": "2Bot123@gmail.com",
+            "skills": [
+                "python",
+                "database",
+                "django",
+                "back-end development"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "alice_dev",
+            "first_name": "Alice",
+            "last_name": "Tan",
+            "gender": "female",
+            "nationality": "Malaysia",
+            "birth_date": "1998-07-14",
+            "phone_number": "0123456789",
+            "email": "alice.tan@example.com",
+            "password": "2Alice.tan@example.com",
+            "skills": [
+                "python",
+                "react",
+                "postgresql",
+                "api development"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "john_smith22",
+            "first_name": "John",
+            "last_name": "Smith",
+            "gender": "male",
+            "nationality": "Singapore",
+            "birth_date": "1995-11-03",
+            "phone_number": "0198765432",
+            "email": "johnsmith22@example.com",
+            "password": "2Johnsmith22@example.com",
+            "skills": [
+                "java",
+                "spring boot",
+                "mysql",
+                "docker"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "nora_uiux",
+            "first_name": "Nora",
+            "last_name": "Lee",
+            "gender": "female",
+            "nationality": "Indonesia",
+            "birth_date": "2000-01-25",
+            "phone_number": "0182233445",
+            "email": "nora.lee@example.com",
+            "password": "2Nora.lee@example.com",
+            "skills": [
+                "figma",
+                "ui design",
+                "ux research",
+                "prototyping"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "backend_ken",
+            "first_name": "Ken",
+            "last_name": "Wong",
+            "gender": "male",
+            "nationality": "Thailand",
+            "birth_date": "1997-09-09",
+            "phone_number": "0171122334",
+            "email": "ken.wong@example.com",
+            "password": "2Ken.wong@example.com",
+            "skills": [
+                "c#",
+                "asp.net core",
+                "sql server",
+                "redis"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "mina_data",
+            "first_name": "Mina",
+            "last_name": "Rahman",
+            "gender": "female",
+            "nationality": "Bangladesh",
+            "birth_date": "1996-05-18",
+            "phone_number": "0165544332",
+            "email": "mina.rahman@example.com",
+            "password": "2Mina.rahman@example.com",
+            "skills": [
+                "data analysis",
+                "pandas",
+                "sql",
+                "power bi"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "profile_links_valid_1",
+            "first_name": "Alice",
+            "last_name": "Tan",
+            "gender": "female",
+            "nationality": "Malaysia",
+            "birth_date": "1998-07-14",
+            "phone_number": "0123456789",
+            "email": "alice.links@example.com",
+            "password": "2Alice.links@example.com",
+            "linkedIn": "https://www.linkedin.com/in/alice-tan",
+            "github": "https://github.com/alicetan",
+            "skills": [
+                "python",
+                "django"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "profile_links_optional",
+            "first_name": "John",
+            "last_name": "Lim",
+            "gender": "male",
+            "nationality": "Singapore",
+            "email": "john.optional@example.com",
+            "password": "2John.optional@example.com",
+            "skills": [
+                "react"
+            ]
+        }
+    }
+]

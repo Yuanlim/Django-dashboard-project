@@ -1,0 +1,299 @@
+[
+    {
+        "info": {
+            "username": "wrong_email_user",
+            "first_name": "Error",
+            "last_name": "Case",
+            "gender": "female",
+            "nationality": "Malaysia",
+            "birth_date": "1994-06-12",
+            "phone_number": "0139999888",
+            "email": "not-an-email",
+            "password": "2Not-an-email",
+            "skills": [
+                "testing",
+                "debugging"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "future_user",
+            "first_name": "Future",
+            "last_name": "Person",
+            "gender": "female",
+            "nationality": "Philippines",
+            "birth_date": "2099-12-31",
+            "phone_number": "0151234567",
+            "email": "future.person@example.com",
+            "password": "2Future.person@example.com",
+            "skills": [
+                "javascript",
+                "nodejs"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "bad_linkedin",
+            "first_name": "Bad",
+            "last_name": "LinkedIn",
+            "gender": "male",
+            "nationality": "Malaysia",
+            "email": "bad.linkedin@example.com",
+            "password": "2Bad.linkedin@example.com",
+            "linkedIn": "https://linkedin.com/in/bad-linkedin",
+            "github": "https://github.com/gooduser"
+        }
+    },
+    {
+        "info": {
+            "username": "bad_github",
+            "first_name": "Bad",
+            "last_name": "Github",
+            "gender": "female",
+            "nationality": "Malaysia",
+            "email": "bad.github@example.com",
+            "password": "2Bad.github@example.com",
+            "linkedIn": "https://www.linkedin.com/in/good-linkedin",
+            "github": "https://www.github.com/baduser"
+        }
+    },
+    {
+        "info": {
+            "username": "both_links_bad",
+            "first_name": "Broken",
+            "last_name": "Links",
+            "gender": "male",
+            "nationality": "Malaysia",
+            "email": "broken.links@example.com",
+            "password": "2Broken.links@example.com",
+            "linkedIn": "linkedin/already-broken",
+            "github": "github/broken"
+        }
+    },
+    {
+        "info": {
+            "username": "empty_required",
+            "first_name": "",
+            "last_name": "",
+            "gender": "",
+            "nationality": "",
+            "email": "emptyrequired@example.com",
+            "password": "2Emptyrequired@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": "invalid_gender",
+            "first_name": "Test",
+            "last_name": "User",
+            "gender": "apache helicopter",
+            "nationality": "Malaysia",
+            "email": "invalidgender@example.com",
+            "password": "2Invalidgender@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": "fake_country",
+            "first_name": "Fake",
+            "last_name": "Country",
+            "gender": "male",
+            "nationality": "Wakanda",
+            "email": "fakecountry@example.com",
+            "password": "2Fakecountry@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": "invalid_email",
+            "first_name": "Email",
+            "last_name": "Broken",
+            "gender": "female",
+            "nationality": "Malaysia",
+            "email": "not-an-email",
+            "password": "2Not-an-email"
+        }
+    },
+    {
+        "info": {
+            "username": "invalid_birth_date",
+            "first_name": "Date",
+            "last_name": "Broken",
+            "gender": "male",
+            "nationality": "Malaysia",
+            "birth_date": "20-04-1969",
+            "email": "invaliddate@example.com",
+            "password": "2Invaliddate@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": "future_birth",
+            "first_name": "Future",
+            "last_name": "Person",
+            "gender": "female",
+            "nationality": "Malaysia",
+            "birth_date": "2099-01-01",
+            "email": "futureperson@example.com",
+            "password": "2Futureperson@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": "long_phone",
+            "first_name": "Phone",
+            "last_name": "Overflow",
+            "gender": "male",
+            "nationality": "Malaysia",
+            "phone_number": "12345678901234567890",
+            "email": "longphone@example.com",
+            "password": "2Longphone@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": "bad_skill_values",
+            "first_name": "Skill",
+            "last_name": "Chaos",
+            "gender": "female",
+            "nationality": "Malaysia",
+            "email": "badskills@example.com",
+            "password": "2Badskills@example.com",
+            "skills": [
+                "",
+                null,
+                123
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": null,
+            "first_name": null,
+            "last_name": null,
+            "gender": null,
+            "nationality": null,
+            "email": null,
+            "password": null
+        }
+    },
+    {
+        "info": {
+            "username": "missing_nationality",
+            "first_name": "Bot",
+            "last_name": "User",
+            "gender": "male",
+            "email": "missingnation@example.com",
+            "password": "2Missingnation@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": "missing_first_name",
+            "last_name": "Bot",
+            "gender": "male",
+            "nationality": "Chad",
+            "email": "missingfirst@example.com",
+            "password": "2Missingfirst@example.com",
+            "skills": [
+                "python"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "missing_last_name",
+            "first_name": "Bot",
+            "gender": "male",
+            "nationality": "Chad",
+            "email": "missinglast@example.com",
+            "password": "2Missinglast@example.com",
+            "skills": [
+                "python"
+            ]
+        }
+    },
+    {
+        "info": {
+            "username": "missing_gender",
+            "first_name": "Bot",
+            "last_name": "User",
+            "nationality": "Chad",
+            "gender": null,
+            "email": "missinggender@example.com",
+            "password": "2Missinggender@example.com"
+        }
+    },
+    {
+        "info": {
+            "username": null,
+            "first_name": "Null",
+            "last_name": "User",
+            "gender": "male",
+            "nationality": null,
+            "birth_date": null,
+            "phone_number": null,
+            "email": null,
+            "password": null,
+            "skills": null
+        }
+    },
+    {
+        "info": {
+            "username": "Symbol User",
+            "first_name": "&^#",
+            "last_name": "SymbolUser",
+            "gender": "male",
+            "nationality": "Philippines",
+            "birth_date": null,
+            "phone_number": null,
+            "email": "SymbolUser@gmail.com",
+            "password": "2SymbolUser@gmail.com",
+            "skills": []
+        }
+    },
+    {
+        "info": {
+            "username": null,
+            "first_name": "Null",
+            "last_name": "Username",
+            "gender": "male",
+            "nationality": "Philippines",
+            "birth_date": null,
+            "phone_number": null,
+            "email": "null_username@gmail.com",
+            "password": "2Null_Username@gmail.com",
+            "skills": []
+        }
+    },
+    {
+        "info": {
+            "username": "Null_Password",
+            "first_name": "Null",
+            "last_name": "Password",
+            "gender": "male",
+            "nationality": "Philippines",
+            "birth_date": null,
+            "phone_number": null,
+            "email": "null_pass@gmail.com",
+            "password": null,
+            "skills": []
+        }
+    },
+    {
+        "info": {
+            "username": "Null_Email",
+            "first_name": "Null",
+            "last_name": "Email",
+            "gender": "male",
+            "nationality": "Philippines",
+            "birth_date": null,
+            "phone_number": null,
+            "email": null,
+            "password": "2Null_Email@gmail.com",
+            "skills": []
+        }
+    }
+]

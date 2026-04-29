@@ -102,4 +102,3 @@ class Achievement(models.Model):
     contribution_description = models.CharField(
         max_length=1000, null=False, blank=False
     )
-

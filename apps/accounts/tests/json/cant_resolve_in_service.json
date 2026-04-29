@@ -1,0 +1,14 @@
+[
+    {
+        "info": {
+            "username": "wrong_skills_type",
+            "first_name": "Skill",
+            "last_name": "Broken",
+            "gender": "male",
+            "nationality": "Malaysia",
+            "email": "wrongskills@example.com",
+            "password": "helloworld",
+            "skills": "python"
+        }
+    }
+]

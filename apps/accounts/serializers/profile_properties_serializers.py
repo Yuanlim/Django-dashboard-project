@@ -83,26 +83,26 @@ class AchievementSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model: Course
+        model = Course
         fields = ["name", "country_code"]
 
 
 class SchoolSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model: School
+        model = School
         fields = ["name"]
 
 
 class CountrySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model: Country
+        model = Country
         fields = ["name"]
 
 
 class EducationCourseSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model: EducationCourse
+        model = EducationCourse
         fields = ["course_description"]
